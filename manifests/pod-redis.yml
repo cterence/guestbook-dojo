@@ -1,0 +1,20 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: redis
+  labels: 
+    app: redis
+spec:
+  volumes:
+    - name: vol
+      emptyDir: {}
+  containers:
+  - name: redis
+    image: redis:5
+    ports:
+    - name: redis
+      containerPort: 6379
+    volumeMounts:
+      - mountPath: /data
+        name: vol
+    
